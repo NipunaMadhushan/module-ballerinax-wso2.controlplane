@@ -9,7 +9,7 @@ license = ["Apache-2.0"]
 [platform.java21]
 graalvmCompatible = true
 
-[[dependency]]
+[[platform.java21.dependency]]
 org = "ballerina"
 name = "observe"
 version = "1.6.0"
