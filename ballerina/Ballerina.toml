@@ -9,5 +9,11 @@ license = ["Apache-2.0"]
 [platform.java21]
 graalvmCompatible = true
 
+[[dependency]]
+org = "ballerina"
+name = "observe"
+version = "1.6.0"
+repository="local"
+
 [[platform.java21.dependency]]
 path = "../native/build/libs/wso2.controlplane-native-1.1.0-SNAPSHOT.jar"
