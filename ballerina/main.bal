@@ -17,6 +17,7 @@
 import ballerina/lang.runtime;
 import ballerina/log;
 import ballerina/task;
+import ballerina/observe;
 
 function init() returns error? {
     worker w1 returns error? {
@@ -26,6 +27,16 @@ function init() returns error? {
 
 function startICPAgent() returns error? {
     log:printInfo("Starting ICP agent...");
+
+    // Add observability tags
+    if (observe:isObservabilityEnabled()) {
+        if runtimeId is string {
+            _ = check observe:addTag("runtime", runtimeId);
+        }
+        _ = check observe:addTag("environment", environment);
+        _ = check observe:addTag("component", component);
+        _ = check observe:addTag("project", project);
+    }
 
     // Load configuration
     IcpConfig config = check loadConfig();
